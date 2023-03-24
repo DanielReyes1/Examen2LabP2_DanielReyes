@@ -5,14 +5,24 @@ import java.util.ArrayList;
 
 
 public class Torneo {
-    private String nombre;
+    private String nombre, periodo;
     private ArrayList<Equipo> equipos = new ArrayList();
     private ArrayList<Partido> partidos = new ArrayList();
 
-    public Torneo(String nombre) {
+    public Torneo(String nombre, String periodo) {
         this.nombre = nombre;
+        this.periodo = periodo;
     }
 
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
+    
     public Torneo() {
     }
 
