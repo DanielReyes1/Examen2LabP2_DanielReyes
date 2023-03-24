@@ -2,6 +2,7 @@
 package examen2labp2_danielreyes;
 
 
+import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -28,6 +29,8 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupmenuequipo = new javax.swing.JPopupMenu();
+        menuitemagregarequipo = new javax.swing.JMenuItem();
         popupmenutorneo = new javax.swing.JPopupMenu();
         menuitemdetorne = new javax.swing.JMenuItem();
         popupmenusport = new javax.swing.JPopupMenu();
@@ -46,6 +49,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         comboboxinservible1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
+        frameequipo = new javax.swing.JFrame();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        textfieldequipo = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -54,6 +63,14 @@ public class Principal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+
+        menuitemagregarequipo.setText("Agregar Equipo al Torneo");
+        menuitemagregarequipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuitemagregarequipoActionPerformed(evt);
+            }
+        });
+        popupmenuequipo.add(menuitemagregarequipo);
 
         popupmenutorneo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -207,6 +224,65 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 204));
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel4.setText("Agregar Equipo");
+
+        jLabel9.setText("NOMBRE");
+
+        jButton5.setBackground(new java.awt.Color(204, 204, 0));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Agregar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textfieldequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textfieldequipo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout frameequipoLayout = new javax.swing.GroupLayout(frameequipo.getContentPane());
+        frameequipo.getContentPane().setLayout(frameequipoLayout);
+        frameequipoLayout.setHorizontalGroup(
+            frameequipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frameequipoLayout.setVerticalGroup(
+            frameequipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("EXAMEN");
 
@@ -321,6 +397,8 @@ public class Principal extends javax.swing.JFrame {
                 popupmenusport.show(treeprincipal, evt.getX(), evt.getY());
             }else if(nodoselect.getUserObject() instanceof Deporte){
                 popupmenutorneo.show(treeprincipal, evt.getX(), evt.getY());
+            }else if(nodoselect.getUserObject() instanceof Torneo){
+                popupmenuequipo.show(treeprincipal, evt.getX(), evt.getY());
             }
 
         }
@@ -342,6 +420,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         Deporte sport;
         sport = new Deporte(textfieldnombredeporte.getText());
+        listadeportes.add(sport);
         DefaultTreeModel modelo = (DefaultTreeModel) treeprincipal.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
         DefaultMutableTreeNode nodohijo = null;
@@ -364,8 +443,42 @@ public class Principal extends javax.swing.JFrame {
         championsleague = new Torneo(textfieldnombredeporte1.getText(), comboboxinservible1.getSelectedItem().toString());
         DefaultTreeModel modelo = (DefaultTreeModel) treeprincipal.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
-        DefaultMutableTreeNode nodoperiodo = null;
-        System.out.println(raiz.getChildCount());
+        DefaultMutableTreeNode nodohijo = null;
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+            nodohijo = (DefaultMutableTreeNode)raiz.getChildAt(i);
+            if(comboboxinservible1.getSelectedItem().toString().equals(nodohijo.getUserObject())){
+                
+                for (int j = 0; j < nodohijo.getChildCount(); j++) {
+                    
+                    DefaultMutableTreeNode nododeporte = (DefaultMutableTreeNode)nodohijo.getChildAt(j);
+                    if(temporal.equals(nododeporte.getUserObject().toString())){
+                        DefaultMutableTreeNode nodotorneo = new DefaultMutableTreeNode(championsleague);
+                        nododeporte.add(nodotorneo);
+                        nodohijo.add(nododeporte);
+                        //agregar al deporte
+                        for (Deporte d : listadeportes) {
+                            if (d.getNombre().equals(nododeporte.getUserObject().toString())) {
+                                d.getTorneos().add(championsleague);
+                            }
+                        }
+                        break;
+                    }
+                    
+                }
+                
+            }
+        }
+        //prueba
+//        for (Deporte l : listadeportes) {
+//            System.out.println(l.getNombre());
+//            System.out.println(l.getTorneos());
+//        }
+        raiz.add(nodohijo);
+        modelo.reload();
+        comboboxinservible1.setSelectedIndex(0);
+        textfieldnombredeporte1.setText("");
+        frameagregartorneo.setVisible(false);
+        this.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void popupmenutorneoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_popupmenutorneoMouseClicked
@@ -376,11 +489,39 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_popupmenutorneoMouseClicked
 
     private void menuitemdetorneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemdetorneActionPerformed
+        temporal = nodoselect.getUserObject().toString();
         this.setVisible(false);
         frameagregartorneo.pack();
         frameagregartorneo.setLocationRelativeTo(this);
         frameagregartorneo.setVisible(true);
     }//GEN-LAST:event_menuitemdetorneActionPerformed
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        Equipo dreamteam;
+        dreamteam = new Equipo(textfieldequipo.getText(), 0);
+        for (Deporte d : listadeportes) {
+            System.out.println(d.getNombre());
+            for (int i = 0; i < d.getTorneos().size(); i++) {
+                System.out.println(d.getTorneos().get(i));
+                if(d.getTorneos().get(i).getNombre().equals(temporal)){
+                    d.getTorneos().get(i).getEquipos().add(dreamteam);
+                    System.out.println(d.getTorneos().get(i).getEquipos());
+                }
+            }
+        }
+        
+        frameequipo.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void menuitemagregarequipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemagregarequipoActionPerformed
+        textfieldequipo.setText("");
+        temporal = nodoselect.getUserObject().toString();
+        this.setVisible(false);
+        frameequipo.pack();
+        frameequipo.setLocationRelativeTo(this);
+        frameequipo.setVisible(true);
+    }//GEN-LAST:event_menuitemagregarequipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,30 +562,42 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboboxinservible1;
     private javax.swing.JFrame frameagregar;
     private javax.swing.JFrame frameagregartorneo;
+    private javax.swing.JFrame frameequipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem menuitemadddeport;
+    private javax.swing.JMenuItem menuitemagregarequipo;
     private javax.swing.JMenuItem menuitemdetorne;
+    private javax.swing.JPopupMenu popupmenuequipo;
     private javax.swing.JPopupMenu popupmenusport;
     private javax.swing.JPopupMenu popupmenutorneo;
+    private javax.swing.JTextField textfieldequipo;
     private javax.swing.JTextField textfieldnombredeporte;
     private javax.swing.JTextField textfieldnombredeporte1;
     private javax.swing.JTree treeprincipal;
     // End of variables declaration//GEN-END:variables
     private DefaultMutableTreeNode nodoselect;
+    private String temporal;
+    private ArrayList<Deporte> listadeportes = new ArrayList();
+
+    
     
 }
