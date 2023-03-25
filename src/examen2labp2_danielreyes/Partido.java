@@ -52,7 +52,7 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido{" + "nombreuno=" + nombreuno + ", nombredos=" + nombredos + ", puntajeuno=" + puntajeuno + ", puntajedos=" + puntajedos + '}';
+        return nombreuno+ " " + puntajeuno + " - "+ puntajedos+ " "+ nombredos;
     }
     
     

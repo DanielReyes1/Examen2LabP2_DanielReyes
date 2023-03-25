@@ -3,7 +3,10 @@ package examen2labp2_danielreyes;
 
 
 import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -75,6 +78,12 @@ public class Principal extends javax.swing.JFrame {
         spinnerequipo1 = new javax.swing.JSpinner();
         spinnerequipo2 = new javax.swing.JSpinner();
         jButton8 = new javax.swing.JButton();
+        dialoghistorial = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        labelutil1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listhistorial = new javax.swing.JList<>();
+        jButton10 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -105,6 +114,11 @@ public class Principal extends javax.swing.JFrame {
         popupmenuequipo.add(jSeparator1);
 
         menuitempartidos.setText("Simulacion de partidos");
+        menuitempartidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuitempartidosActionPerformed(evt);
+            }
+        });
         popupmenuequipo.add(menuitempartidos);
 
         popupmenutorneo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -333,6 +347,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(255, 255, 204));
         jButton6.setText("Historial");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(255, 255, 204));
         jButton7.setText("Volver");
@@ -395,6 +414,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButton8.setBackground(new java.awt.Color(102, 255, 102));
         jButton8.setText("Terminar Potra");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -448,6 +472,68 @@ public class Principal extends javax.swing.JFrame {
         framepartidoLayout.setVerticalGroup(
             framepartidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel8.setBackground(new java.awt.Color(255, 204, 255));
+
+        labelutil1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        labelutil1.setText("HISTORIAL DE ");
+
+        listhistorial.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        listhistorial.setModel(new DefaultListModel());
+        listhistorial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listhistorialMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(listhistorial);
+
+        jButton10.setBackground(new java.awt.Color(255, 255, 204));
+        jButton10.setText("Volver");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(labelutil1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(labelutil1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+
+        javax.swing.GroupLayout dialoghistorialLayout = new javax.swing.GroupLayout(dialoghistorial.getContentPane());
+        dialoghistorial.getContentPane().setLayout(dialoghistorialLayout);
+        dialoghistorialLayout.setHorizontalGroup(
+            dialoghistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dialoghistorialLayout.setVerticalGroup(
+            dialoghistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -694,7 +780,7 @@ public class Principal extends javax.swing.JFrame {
         jList1.setModel(new DefaultListModel());
         DefaultListModel modelo = (DefaultListModel)jList1.getModel();
         String torneo = nodoselect.getUserObject().toString();
-        labelutil.setText(labelutil.getText()+ torneo);
+        labelutil.setText("LISTA DE EQUIPOS DE"+ torneo);
         for (Deporte d : listadeportes) {
             for (int i = 0; i < d.getTorneos().size(); i++) {
                 if(d.getTorneos().get(i).toString().equals(torneo)){
@@ -719,6 +805,104 @@ public class Principal extends javax.swing.JFrame {
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         
     }//GEN-LAST:event_jList1MouseClicked
+
+    private void menuitempartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitempartidosActionPerformed
+        comboboxequipo1.setModel((new DefaultComboBoxModel()));
+        comboboxequipo2.setModel(new DefaultComboBoxModel());
+        String buscar = nodoselect.getUserObject().toString();
+        for (Deporte l : listadeportes) {
+            for (int i = 0; i < l.getTorneos().size(); i++) {
+                if(l.getTorneos().get(i).getNombre().equals(buscar)){
+                    for (int j = 0; j < l.getTorneos().get(i).getEquipos().size(); j++) {
+                        comboboxequipo1.addItem(l.getTorneos().get(i).getEquipos().get(j).getNombre());
+                        comboboxequipo2.addItem(l.getTorneos().get(i).getEquipos().get(j).getNombre());
+                    }
+                }
+            }
+        }
+        
+        this.setVisible(false);
+        framepartido.pack();
+        framepartido.setLocationRelativeTo(this);
+        framepartido.setVisible(true);
+        
+    }//GEN-LAST:event_menuitempartidosActionPerformed
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        if(comboboxequipo1.getSelectedItem().toString().equals(comboboxequipo2.getSelectedItem().toString())){
+            JOptionPane.showMessageDialog(framepartido, "NO SE PUEDE JUGAR CON LOS MISMOS EQUIPOS");
+        }else{
+            Partido potra;
+            potra = new Partido(comboboxequipo1.getSelectedItem().toString(), comboboxequipo2.getSelectedItem().toString(), (Integer) spinnerequipo1.getValue(), (Integer) spinnerequipo2.getValue());
+            for (Deporte d : listadeportes) {
+                for (int i = 0; i < d.getTorneos().size(); i++) {
+                    if (d.getTorneos().get(i).getNombre().equals(nodoselect.getUserObject().toString())) {
+                        for (int j = 0; j < d.getTorneos().get(i).getEquipos().size(); j++) {
+                            if(d.getTorneos().get(i).getEquipos().get(j).equals(comboboxequipo1.getSelectedItem().toString())){
+                                if((Integer)spinnerequipo1.getValue()>(Integer)spinnerequipo2.getValue()){
+                                    int puntos=d.getTorneos().get(i).getEquipos().get(j).getPuntos();
+                                    d.getTorneos().get(i).getEquipos().get(j).setPuntos(puntos+3);
+                                }else if((Integer)spinnerequipo2.getValue()==(Integer)spinnerequipo1.getValue()){
+                                    int puntos=d.getTorneos().get(i).getEquipos().get(j).getPuntos();
+                                    d.getTorneos().get(i).getEquipos().get(j).setPuntos(puntos+1);
+                                }
+                                
+                            }
+                            if(d.getTorneos().get(i).getEquipos().get(j).equals(comboboxequipo2.getSelectedItem().toString())){
+                                if((Integer)spinnerequipo2.getValue()>(Integer)spinnerequipo1.getValue()){
+                                    int puntos=d.getTorneos().get(i).getEquipos().get(j).getPuntos();
+                                    d.getTorneos().get(i).getEquipos().get(j).setPuntos(puntos+3);
+                                }else if((Integer)spinnerequipo2.getValue()==(Integer)spinnerequipo1.getValue()){
+                                    int puntos=d.getTorneos().get(i).getEquipos().get(j).getPuntos();
+                                    d.getTorneos().get(i).getEquipos().get(j).setPuntos(puntos+1);
+                                }
+                                
+                            }
+                        }
+                        d.getTorneos().get(i).getPartidos().add(potra);
+
+                    }
+                }
+            }
+            spinnerequipo1.setValue(0);
+            spinnerequipo2.setValue(0);
+            JOptionPane.showMessageDialog(framepartido, "PARTIDO TERMINADO");
+            framepartido.setVisible(false);
+            this.setVisible(true); 
+        }
+        
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void listhistorialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listhistorialMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listhistorialMouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        dialoghistorial.setVisible(false);
+        dialoglista.pack();
+        dialoglista.setLocationRelativeTo(this);
+        dialoglista.setVisible(true);
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        dialoglista.setVisible(false);
+        dialoghistorial.pack();
+        dialoghistorial.setLocationRelativeTo(this);
+        dialoghistorial.setVisible(true);
+        labelutil1.setText("HISTORIAL DE " + nodoselect.getUserObject().toString());
+        DefaultListModel modelo = (DefaultListModel) listhistorial.getModel();
+        modelo.removeAllElements();
+        for (Deporte d : listadeportes) {
+            for (int i = 0; i < d.getTorneos().size(); i++) {
+                if(nodoselect.getUserObject().toString().equals(d.getTorneos().get(i).getNombre())){
+                    for (int j = 0; j < d.getTorneos().get(i).getPartidos().size(); j++) {
+                        modelo.addElement(d.getTorneos().get(i).getPartidos().get(j).toString());
+                        modelo.addElement("\n");
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -759,12 +943,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboboxequipo1;
     private javax.swing.JComboBox<String> comboboxequipo2;
     private javax.swing.JComboBox<String> comboboxinservible1;
+    private javax.swing.JDialog dialoghistorial;
     private javax.swing.JDialog dialoglista;
     private javax.swing.JFrame frameagregar;
     private javax.swing.JFrame frameagregartorneo;
     private javax.swing.JFrame frameequipo;
     private javax.swing.JFrame framepartido;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -790,10 +976,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel labelutil;
+    private javax.swing.JLabel labelutil1;
+    private javax.swing.JList<String> listhistorial;
     private javax.swing.JMenuItem menuitemadddeport;
     private javax.swing.JMenuItem menuitemagregarequipo;
     private javax.swing.JMenuItem menuitemdetorne;
