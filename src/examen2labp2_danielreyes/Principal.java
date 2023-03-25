@@ -1,10 +1,17 @@
 package examen2labp2_danielreyes;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -94,10 +101,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         treeprincipal = new javax.swing.JTree();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonCargar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         menuitemagregarequipo.setText("Agregar Equipo al Torneo");
         menuitemagregarequipo.addActionListener(new java.awt.event.ActionListener() {
@@ -646,11 +653,13 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(treeprincipal);
 
-        jButton1.setText("GUARDAR TREE");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton2.setText("CARGAR TREE");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buttonCargar.setText("CARGAR TREE");
+        buttonCargar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buttonCargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCargarMouseClicked(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 102, 102));
 
@@ -673,23 +682,26 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
         );
 
+        jProgressBar1.setBackground(new java.awt.Color(102, 255, 102));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(171, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(110, 110, 110)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -699,15 +711,12 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(106, 106, 106)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -759,6 +768,31 @@ public class Principal extends javax.swing.JFrame {
         Deporte sport;
         sport = new Deporte(textfieldnombredeporte.getText());
         listadeportes.add(sport);
+        JFileChooser jfc = new JFileChooser();
+        int indice = jfc.showSaveDialog(this);
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        if (indice == JFileChooser.APPROVE_OPTION) {
+            File fichero = jfc.getSelectedFile();
+            try {
+                fw = new FileOutputStream(fichero);
+                bw = new ObjectOutputStream(fw);
+                Binario ad = new Binario(sport);
+                bw.writeObject(ad);
+                
+                bw.flush();
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            bw.close();
+            fw.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         DefaultTreeModel modelo = (DefaultTreeModel) treeprincipal.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
         DefaultMutableTreeNode nodohijo = null;
@@ -974,6 +1008,7 @@ public class Principal extends javax.swing.JFrame {
         dialoghistorial.pack();
         dialoghistorial.setLocationRelativeTo(this);
         dialoghistorial.setVisible(true);
+        
         labelutil1.setText("HISTORIAL DE " + nodoselect.getUserObject().toString());
         DefaultListModel modelo = (DefaultListModel) listhistorial.getModel();
         modelo.removeAllElements();
@@ -983,6 +1018,7 @@ public class Principal extends javax.swing.JFrame {
                     for (int j = 0; j < d.getTorneos().get(i).getPartidos().size(); j++) {
                         modelo.addElement(d.getTorneos().get(i).getPartidos().get(j).toString());
                         modelo.addElement("\n");
+                        
                     }
                 }
             }
@@ -1015,8 +1051,55 @@ public class Principal extends javax.swing.JFrame {
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         frametabla.setVisible(false);
         this.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton9MouseClicked
+
+    private void buttonCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCargarMouseClicked
+        jProgressBar1.setValue(jProgressBar1.getMinimum());
+        try {
+            File fichero = null;
+            FileInputStream entrada = null;
+            ObjectInputStream objeto = null;
+            try {
+                JFileChooser jfc = new JFileChooser();
+                int seleccion = jfc.showSaveDialog(this);
+                if (seleccion == JFileChooser.APPROVE_OPTION) {
+                    //BARRA
+                    admin = new Barra(jProgressBar1, true);
+                    admin.start();
+                    
+                    
+                    fichero = jfc.getSelectedFile();
+                    entrada = new FileInputStream(fichero);
+                    objeto = new ObjectInputStream(entrada);
+                    Binario ad = (Binario) objeto.readObject();
+                    DefaultTreeModel modelo = (DefaultTreeModel) treeprincipal.getModel();
+                    DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+                    DefaultMutableTreeNode nodohijo = null;
+                    for (int i = 0; i < raiz.getChildCount(); i++) {
+                        nodohijo = (DefaultMutableTreeNode) raiz.getChildAt(i);
+                        DefaultMutableTreeNode nodosport = new DefaultMutableTreeNode(ad.getSport().getNombre());
+                        nodohijo.add(nodosport);
+                        
+                    }
+                    raiz.add(nodohijo);
+                    modelo.reload();
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                objeto.close();
+                entrada.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } catch (NullPointerException e) {
+            
+        }
+        
+    }//GEN-LAST:event_buttonCargarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1054,6 +1137,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCargar;
     private javax.swing.JComboBox<String> comboboxequipo1;
     private javax.swing.JComboBox<String> comboboxequipo2;
     private javax.swing.JComboBox<String> comboboxinservible1;
@@ -1064,9 +1148,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JFrame frameequipo;
     private javax.swing.JFrame framepartido;
     private javax.swing.JFrame frametabla;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1095,6 +1177,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1123,6 +1206,7 @@ public class Principal extends javax.swing.JFrame {
     private DefaultMutableTreeNode nodoselect;
     private String temporal;
     private ArrayList<Deporte> listadeportes = new ArrayList();
+    private Barra admin;
 
     public void arreglarequipos() {
         int cont = 0;
@@ -1132,12 +1216,12 @@ public class Principal extends javax.swing.JFrame {
 
                     for (int k = 100; k > 0; k--) {
                         for (int j = 0; j < d.getTorneos().get(i).getEquipos().size(); j++) {
-                            if(d.getTorneos().get(i).getEquipos().get(j).getPuntos()== k){
+                            if (d.getTorneos().get(i).getEquipos().get(j).getPuntos() == k) {
                                 Equipo x = d.getTorneos().get(i).getEquipos().get(j);
                                 d.getTorneos().get(i).getEquipos().remove(x);
-                                d.getTorneos().get(i).getEquipos().add(cont,x);
+                                d.getTorneos().get(i).getEquipos().add(cont, x);
                                 cont++;
-                                
+
                             }
                         }
                     }
